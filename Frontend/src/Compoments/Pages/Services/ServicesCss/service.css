@@ -1,0 +1,153 @@
+about-hero {
+  height: 70vh;
+  background: url("../images/services.png")
+    center/cover no-repeat;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay {
+  background: rgba(120, 0, 0, 0.85);
+  width: 100%;
+  height: 100%;
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+}
+
+.overlay h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  opacity: 0.9;
+}
+
+.description {
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+
+.services-section {
+  padding: 120px 80px;
+  background: linear-gradient(135deg, #f9fafb, #eef2f7);
+  font-family: "Poppins", sans-serif;
+}
+
+.services-header {
+  text-align: center;
+  margin-bottom: 90px;
+}
+
+.services-header h2 {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #1f2937;
+}
+
+.services-header p {
+  max-width: 700px;
+  margin: auto;
+  color: #6b7280;
+  font-size: 16px;
+}
+
+/* GRID */
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+/* CARD */
+
+.service-card {
+  position: relative;
+  background: #ffffff;
+  padding: 50px 40px;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+  transition: 0.4s ease;
+  overflow: hidden;
+}
+
+.service-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.12);
+}
+
+/* ICON */
+
+.service-icon {
+  font-size: 40px;
+  color: #e1251b;
+  margin-bottom: 25px;
+}
+
+/* TITLE */
+
+.service-card h3 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: #111827;
+}
+
+/* DESCRIPTION */
+
+.service-card p {
+  font-size: 15px;
+  color: #4b5563;
+  line-height: 1.7;
+}
+
+/* RED HOVER LINE */
+
+.service-hover-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 4px;
+  background: #e1251b;
+  transition: 0.4s ease;
+}
+
+.service-card:hover .service-hover-line {
+  width: 100%;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1200px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .services-section {
+    padding: 80px 30px;
+  }
+
+  .services-header h2 {
+    font-size: 36px;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+}
+

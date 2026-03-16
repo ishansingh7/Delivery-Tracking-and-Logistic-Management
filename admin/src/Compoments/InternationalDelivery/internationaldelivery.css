@@ -1,0 +1,242 @@
+/* GLOBAL */
+
+*{
+box-sizing:border-box;
+font-family:"Segoe UI",Arial,sans-serif;
+}
+
+body{
+background:#f4f7fb;
+margin:0;
+}
+
+/* DASHBOARD CONTAINER */
+
+.admin-container{
+padding:40px;
+max-width:1300px;
+margin:auto;
+}
+
+.admin-container h1{
+margin-bottom:25px;
+color:#2c3e50;
+font-weight:600;
+}
+
+/* TABLE */
+
+table{
+width:100%;
+border-collapse:collapse;
+background:white;
+border-radius:8px;
+overflow:hidden;
+box-shadow:0 6px 20px rgba(0,0,0,0.08);
+}
+
+thead{
+background:linear-gradient(90deg,#1e3c72,#2a5298);
+color:white;
+}
+
+th{
+padding:15px;
+text-align:left;
+font-size:14px;
+}
+
+td{
+padding:13px;
+border-bottom:1px solid #eee;
+font-size:14px;
+}
+
+tr:hover{
+background:#f8f9ff;
+}
+
+/* BUTTONS */
+
+button{
+border:none;
+padding:6px 12px;
+border-radius:6px;
+margin-right:5px;
+cursor:pointer;
+font-size:13px;
+color:white;
+transition:0.2s;
+}
+
+button:hover{
+transform:translateY(-1px);
+}
+
+/* VIEW */
+
+.view-btn{
+background:#3498db;
+}
+
+/* APPROVE */
+
+.approve-btn{
+background:#2ecc71;
+}
+
+/* REJECT */
+
+.reject-btn{
+background:#f39c12;
+}
+
+/* DELETE */
+
+.delete-btn{
+background:#e74c3c;
+}
+
+/* MODAL */
+
+.modal-overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:1000;
+}
+
+/* MODAL BOX */
+
+.modal{
+background:white;
+width:800px;
+padding:25px;
+border-radius:10px;
+box-shadow:0 12px 35px rgba(0,0,0,0.25);
+animation:modalSlide 0.25s ease;
+}
+
+/* HEADER */
+
+.modal-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:20px;
+}
+
+.modal-header h2{
+color:#2c3e50;
+}
+
+.close-btn{
+cursor:pointer;
+font-size:20px;
+color:#e74c3c;
+}
+
+/* GRID */
+
+.details-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:20px;
+}
+
+/* DETAIL CARD */
+
+.detail-card{
+background:#f8f9fb;
+padding:16px;
+border-radius:8px;
+box-shadow:0 2px 6px rgba(0,0,0,0.05);
+}
+
+.detail-card h3{
+margin-bottom:10px;
+color:#1e3c72;
+font-size:16px;
+}
+
+.detail-card p{
+margin:4px 0;
+font-size:14px;
+color:#333;
+}
+
+/* ADDRESS BOX */
+
+.address-box{
+background:#fff;
+border:1px solid #ddd;
+padding:10px;
+border-radius:6px;
+margin-top:6px;
+font-size:13px;
+line-height:1.5;
+color:#444;
+word-wrap:break-word;
+}
+
+/* STATUS BADGES */
+
+.status-approved{
+background:#e8f8f1;
+color:#27ae60;
+padding:4px 10px;
+border-radius:20px;
+font-size:12px;
+}
+
+.status-rejected{
+background:#fdecea;
+color:#e74c3c;
+padding:4px 10px;
+border-radius:20px;
+font-size:12px;
+}
+
+.status-pending{
+background:#fff6e5;
+color:#f39c12;
+padding:4px 10px;
+border-radius:20px;
+font-size:12px;
+}
+
+/* ANIMATION */
+
+@keyframes modalSlide{
+
+from{
+opacity:0;
+transform:translateY(-15px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+.details-grid{
+grid-template-columns:1fr;
+}
+
+.modal{
+width:90%;
+}
+
+}

@@ -1,6 +1,7 @@
 import React from "react";
 import "./Home.css";
 import heroImage from "./photo/DeliveryBoy.png";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -41,11 +42,11 @@ const Home = () => {
           <p>Get instant shipping rates</p>
         </div>
 
-        <div className="shipment-card shipment-highlight">
+        <Link to="/servicesDelibery" className="shipment-card shipment-highlight">
           <div className="shipment-icon">🚚</div>
           <h3>Send Shipment</h3>
           <p>Start shipping with ease. No registrations required!</p>
-        </div>
+        </Link>
 
         <div className="shipment-card">
           <div className="shipment-icon">💼</div>

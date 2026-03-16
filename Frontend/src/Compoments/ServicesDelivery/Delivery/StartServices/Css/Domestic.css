@@ -1,0 +1,135 @@
+/* Page background */
+.delivery-container{
+ 
+  background:#f5f7fb;
+
+ 
+  align-items:center;
+  padding:90px 350px;
+  font-family: "Segoe UI", sans-serif;
+}
+
+
+/* Form card */
+.delivery-form {
+    width: 850px;
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* Main Title */
+.delivery-container h1 {
+    text-align: center;
+    color: #1a2b49;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+/* Section titles */
+.delivery-form h3 {
+    font-size: 18px;
+    color: #2a3c5f;
+    margin-top: 10px;
+    border-bottom: 2px solid #eaeaea;
+    padding-bottom: 5px;
+}
+
+/* Input Grid Layout */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+/* Inputs */
+.delivery-form input,
+.delivery-form textarea,
+.delivery-form select {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 6px;
+    border: 1px solid #dcdcdc;
+    font-size: 14px;
+    transition: 0.3s;
+    background: #fafafa;
+}
+
+/* Input focus */
+.delivery-form input:focus,
+.delivery-form textarea:focus,
+.delivery-form select:focus {
+    border-color: #007bff;
+    background: white;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.15);
+    outline: none;
+}
+
+/* textarea */
+.delivery-form textarea {
+    resize: none;
+    height: 80px;
+}
+
+/* Submit button */
+.delivery-form button {
+    margin-top: 10px;
+    padding: 14px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* button hover */
+.delivery-form button:hover {
+    background: #0056d2;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Start Service Button */
+.start-btn {
+    padding: 14px 32px;
+    background: #ff6b00;
+    color: white;
+    font-size: 17px;
+    border: none;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.start-btn:hover {
+    background: #e85d00;
+    transform: scale(1.05);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+/* Responsive */
+@media(max-width:768px) {
+
+    .delivery-form {
+        width: 95%;
+        padding: 25px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .delivery-container h1 {
+        font-size: 26px;
+    }
+
+}

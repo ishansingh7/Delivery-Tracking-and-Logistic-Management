@@ -1,0 +1,136 @@
+/* ================= SECTION ================= */
+
+.process-section {
+  padding: 140px 100px;
+  background: linear-gradient(135deg, #f8fafc, #eef2f7);
+  font-family: "Poppins", "Segoe UI", sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Section Title */
+
+.process-title {
+  text-align: center;
+  font-size: 52px;
+  font-weight: 700;
+  margin-bottom: 100px;
+  color: #1f2937;
+  position: relative;
+}
+
+.process-title::after {
+  content: "";
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #e1251b, #ff6b6b);
+  display: block;
+  margin: 20px auto 0;
+  border-radius: 10px;
+}
+
+/* ================= GRID ================= */
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 100px 70px;
+}
+
+/* ================= CARD ================= */
+
+.process-card {
+  position: relative;
+  padding: 30px;
+  border-radius: 20px;
+  transition: all 0.4s ease;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+}
+
+/* Hover Effect */
+
+.process-card:hover {
+  transform: translateY(-15px);
+  background: #d4c8c8;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.1);
+}
+
+/* Title */
+
+.process-card h3 {
+  font-size: 26px;
+  margin-bottom: 20px;
+  color: #111827;
+  font-weight: 600;
+}
+
+/* Text */
+
+.process-card p {
+  font-size: 16px;
+  color: #4b5563;
+  line-height: 1.8;
+  max-width: 350px;
+}
+
+/* ================= BIG BACKGROUND NUMBER ================= */
+
+.process-number {
+  position: absolute;
+  top: -70px;
+  left: 0;
+  font-size: 180px;
+  font-weight: 800;
+  background: linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.02));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  z-index: 0;
+  pointer-events: none;
+  transition: 0.4s ease;
+}
+
+/* Slight animation on hover */
+
+.process-card:hover .process-number {
+  transform: scale(1.05);
+  opacity: 0.7;
+}
+
+/* Keep text above number */
+
+.process-card h3,
+.process-card p {
+  position: relative;
+  z-index: 2;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 1200px) {
+  .process-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .process-section {
+    padding: 90px 30px;
+  }
+
+  .process-title {
+    font-size: 38px;
+    margin-bottom: 70px;
+  }
+
+  .process-grid {
+    grid-template-columns: 1fr;
+    gap: 80px;
+  }
+
+  .process-number {
+    font-size: 130px;
+    top: -50px;
+  }
+}

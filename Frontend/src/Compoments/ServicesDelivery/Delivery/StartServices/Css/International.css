@@ -1,0 +1,126 @@
+/* Page Background */
+.delivery-container{
+  background:#f5f7fb;
+
+ 
+  align-items:center;
+  padding:90px 350px;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* Form Card */
+.delivery-form{
+  width:900px;
+  background:white;
+  padding:40px;
+  border-radius:12px;
+  box-shadow:0 8px 30px rgba(0,0,0,0.08);
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+
+/* Title */
+.delivery-container h1{
+  text-align:center;
+  font-size:34px;
+  color:#1b2b4a;
+  font-weight:700;
+  margin-bottom:25px;
+}
+
+/* Section Titles */
+.delivery-form h3{
+  color:#2d3e60;
+  font-size:18px;
+  border-left:4px solid #007bff;
+  padding-left:10px;
+  margin-top:10px;
+}
+
+/* Grid Layout */
+.form-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+}
+
+/* 3 column grid (for dimensions) */
+.form-row input:nth-child(3){
+  grid-column:auto;
+}
+
+/* Inputs */
+.delivery-form input,
+.delivery-form select,
+.delivery-form textarea{
+  width:100%;
+  padding:12px 14px;
+  border-radius:6px;
+  border:1px solid #dcdcdc;
+  font-size:14px;
+  transition:0.3s;
+  background:#fafafa;
+}
+
+/* Hover effect */
+.delivery-form input:hover,
+.delivery-form select:hover,
+.delivery-form textarea:hover{
+  border-color:#007bff;
+}
+
+/* Focus */
+.delivery-form input:focus,
+.delivery-form select:focus,
+.delivery-form textarea:focus{
+  border-color:#007bff;
+  background:white;
+  outline:none;
+  box-shadow:0 0 0 2px rgba(0,123,255,0.15);
+}
+
+/* Textarea */
+.delivery-form textarea{
+  resize:none;
+  height:80px;
+}
+
+/* Button */
+.delivery-form button{
+  margin-top:15px;
+  padding:14px;
+  background:#007bff;
+  color:white;
+  font-size:16px;
+  border:none;
+  border-radius:6px;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+/* Button hover */
+.delivery-form button:hover{
+  background:#0056d2;
+  transform:translateY(-2px);
+  box-shadow:0 6px 15px rgba(0,0,0,0.15);
+}
+
+/* Responsive */
+@media (max-width:900px){
+
+  .delivery-form{
+    width:95%;
+    padding:25px;
+  }
+
+  .form-row{
+    grid-template-columns:1fr;
+  }
+
+  .delivery-container h1{
+    font-size:28px;
+  }
+
+}

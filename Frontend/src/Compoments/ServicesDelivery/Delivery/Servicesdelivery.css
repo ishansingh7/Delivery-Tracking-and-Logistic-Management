@@ -1,0 +1,112 @@
+.services-page{
+    padding:80px 10%;
+    background:#f2f4f8;
+    font-family:'Segoe UI',sans-serif;
+}
+
+/* HEADER */
+
+.services-header{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.services-header h1{
+    font-size:42px;
+    color:#0d3b66;
+    font-weight:700;
+}
+
+.services-header p{
+    margin-top:10px;
+    color:#000000;
+    font-size:16px;
+}
+
+/* CONTAINER */
+
+.services-container{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:60px;
+}
+
+/* SERVICE CARD */
+
+.service-card{
+    background:#fdfeff;
+    padding:40px 30px;
+    border-radius:8px;
+    text-align:center;
+    color:rgb(0, 0, 0);
+    transition:0.3s;
+}
+
+/* HOVER EFFECT */
+
+.service-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 15px 35px rgba(0,0,0,0.25);
+}
+
+/* IMAGE */
+
+.service-image{
+    width:250px;
+    margin-bottom:20px;
+    border-radius: 350px 350px 350px;
+}
+
+/* TITLE */
+
+.service-card h2{
+    margin-bottom:15px;
+    
+}
+
+/* DESCRIPTION */
+
+.service-card p{
+    font-size:14px;
+    margin-bottom:20px;
+    line-height:1.6;
+}
+
+/* LIST */
+
+.service-card ul{
+    list-style:none;
+    padding:0;
+    margin-bottom:25px;
+}
+
+.service-card ul li{
+    margin-bottom:8px;
+}
+
+/* BUTTON */
+
+.start-btn{
+    background:rgb(215, 29, 29);
+    color:#000000;
+    border:none;
+    padding:15px 30px;
+    border-radius:25px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.start-btn:hover{
+    background:#e6e6e6;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+.services-container{
+    grid-template-columns:1fr;
+}
+
+}

@@ -1,0 +1,296 @@
+/* ───────────────── GLOBAL RESET ───────────────── */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  background: #f5f6f7;
+  color: #1e293b;
+  overflow-x: hidden;
+}
+
+/* ───────────────── DASHBOARD WRAPPER ───────────────── */
+
+.dashboard-wrapper {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ───────────────── SIDEBAR ───────────────── */
+
+.sidebar {
+  position: fixed;
+  top: 16px;
+  bottom: 16px;
+  left: 16px;
+
+  width: 250px;
+
+  background: #888c93;
+  border-radius: 18px;
+
+  box-shadow:
+    0 10px 25px rgba(0,0,0,0.08),
+    0 2px 6px rgba(0,0,0,0.05);
+
+  display: flex;
+  flex-direction: column;
+
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.sidebar.closed {
+  width: 80px;
+}
+
+/* ───────────────── SIDEBAR HEADER ───────────────── */
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 22px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.logo-icon {
+  font-size: 20px;
+}
+
+.toggle-btn {
+  border: none;
+  background: #080d12;
+
+  width: 34px;
+  height: 34px;
+
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.toggle-btn:hover {
+  background: #070b11;
+}
+
+/* ───────────────── USER PROFILE ───────────────── */
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 16px 22px;
+
+  border-top: 1px solid #fcfcfc;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+
+  background: linear-gradient(135deg,#6366f1,#9333ea);
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: rgb(236, 226, 226);
+  font-weight: 600;
+}
+
+.user-info h4 {
+  font-size: 14px;
+}
+
+.user-info p {
+  font-size: 12px;
+  color: #d4d5d5;
+}
+
+/* ───────────────── NAVIGATION ───────────────── */
+
+.sidebar-nav {
+  flex: 1;
+  padding: 14px 10px;
+}
+
+.sidebar-nav ul {
+  list-style: none;
+}
+
+.sidebar-nav li {
+  margin-bottom: 6px;
+}
+
+.sidebar-nav a,
+.sidebar-nav button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  width: 100%;
+
+  padding: 12px 14px;
+
+  border-radius: 10px;
+
+  text-decoration: none;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  color: #0b0e13;
+
+  background: transparent;
+
+  border: none;
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.sidebar-nav a:hover,
+.sidebar-nav button:hover {
+  background: #58799a;
+}
+
+/* active menu */
+
+.sidebar-nav .active {
+  background: #6366f1;
+  color: rgb(21, 12, 12);
+}
+
+/* highlight item */
+
+.highlight-item button {
+  background: linear-gradient(90deg,#6366f1,#9333ea);
+  color: white;
+}
+
+.highlight-item button:hover {
+  opacity: 0.9;
+}
+
+/* icons */
+
+.icon {
+  font-size: 18px;
+}
+
+/* ───────────────── LOGOUT ───────────────── */
+
+.sidebar-footer {
+  padding: 14px;
+}
+
+.logout-btn {
+  width: 100%;
+
+  padding: 12px;
+
+  border-radius: 10px;
+
+  border: none;
+
+  font-weight: 600;
+
+  background: #fee2e2;
+  color: #dc2626;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.logout-btn:hover {
+  background: #dc2626;
+  color: white;
+}
+
+/* ───────────────── MAIN CONTENT ───────────────── */
+
+.main-content {
+  flex: 1;
+
+  margin-left: 280px;
+
+  padding: 30px;
+
+  transition: margin-left 0.3s ease;
+}
+
+.main-content.sidebar-closed {
+  margin-left: 110px;
+}
+
+/* ───────────────── COLLAPSED SIDEBAR ───────────────── */
+
+.sidebar.closed .logo-text,
+.sidebar.closed .user-info,
+.sidebar.closed .label {
+  display: none;
+}
+
+.sidebar.closed a,
+.sidebar.closed button {
+  justify-content: center;
+}
+
+/* ───────────────── RESPONSIVE ───────────────── */
+
+@media (max-width: 1024px) {
+
+.sidebar {
+  left: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 0;
+}
+
+.main-content {
+  margin-left: 80px;
+}
+
+.main-content.sidebar-open {
+  margin-left: 250px;
+}
+
+}
+
+@media (max-width: 640px) {
+
+.sidebar {
+  transform: translateX(-100%);
+}
+
+.sidebar.open {
+  transform: translateX(0);
+}
+
+.main-content {
+  margin-left: 0;
+}
+
+}

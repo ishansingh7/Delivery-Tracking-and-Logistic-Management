@@ -48,12 +48,13 @@ const Navbar = () => {
 
       {/* RIGHT LINKS */}
       <nav className={`nav-links ${menuOpen ? "open" : ""}`}>
-        <a href="Home">Home</a>
-        <a href="About">About</a>
-        <a href="#">Services</a>
-        <a href="#">Contact</a>
+        <a href="/">Home</a>
+        <a href="/About">About</a>
+        <a href="/Services">Services</a>
+        <a href="/contact">Contact</a>
         <a href="#">Locations</a>
         <a href="#">Jobs</a>
+         <a href="#">Admin</a>
         <a href="#">Login</a>
         <button className="track-btn">TRACK</button>
       </nav>
