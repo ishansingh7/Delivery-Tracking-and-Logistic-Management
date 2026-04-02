@@ -5,9 +5,10 @@ import { useState } from "react";
 import Login from "./Compoments/LoginFrom/Login";
 import DomesticDelivery from "./Compoments/DomesticDelivery/DomesticDelivery";
 import AdminHome from "./Compoments/Home/AdminHome";           // your dashboard page
-import AdminLayout from "./Compoments/Home/AdminHome";             // ← new
-import TrackDelivery from "./Compoments/Tracking/TrackDelivery";   // ← new
+import AdminLayout from "./Compoments/Layout/AdminLayout";             // ← layout
+import TrackDelivery from "./Compoments/Tracking/TrackDelivery";   // ← track page
 import InternationlDelivery from "./Compoments/InternationalDelivery/InternationalDelivery";
+import DeliveryAgents from "./Compoments/DeliveryAgents/DeliveryAgents";   // ← delivery agents
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -33,6 +34,7 @@ function App() {
           <Route path="/domesticdelivery" element={<DomesticDelivery />} />
           <Route path="/trackdelivery" element={<TrackDelivery />} />
           <Route path="/internationaldelivery" element={<InternationlDelivery />} />
+          <Route path="/agents" element={<DeliveryAgents />} />
 
           {/* Add more protected routes here later */}
           {/* <Route path="/reports" element={<Reports />} /> */}

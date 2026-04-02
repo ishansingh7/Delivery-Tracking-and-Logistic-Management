@@ -63,7 +63,7 @@ const AdminDashboard = () => {
 
         <thead>
 
-          <tr>
+          <tr className="table-top-head">
             <th>Tracking ID</th>
             <th>Sender</th>
             <th>Receiver</th>
@@ -79,7 +79,7 @@ const AdminDashboard = () => {
 
           {deliveries.map((d) => (
 
-            <tr key={d._id}>
+            <tr className="table-data" key={d._id}>
 
               <td>{d.trackingId}</td>
               <td>{d.senderName}</td>

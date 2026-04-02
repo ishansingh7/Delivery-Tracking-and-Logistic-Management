@@ -1,101 +1,137 @@
-// src/layouts/AdminLayout.jsx
-import { useState } from 'react';
-import { Outlet, Link } from 'react-router-dom';
-import './Home.css';   // we'll create this next
+import { useState, useEffect } from "react";
+import "./Home.css";
 
-export default function AdminLayout() {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+export default function AdminHome() {
+  const [stats, setStats] = useState({
+    totalDeliveries: 0,
+    completed: 0,
+    pending: 0,
+    activeDrivers: 0,
+  });
+  const [loading, setLoading] = useState(true);
 
-  const companyName = "SwiftLogix"; // ← your company
-  const userName = "Ishan Singh";
-  const userRole = "Admin";
+  useEffect(() => {
+    fetchStats();
+  }, []);
 
-  const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
+  const fetchStats = async () => {
+    try {
+      setLoading(true);
+      
+      // Fetch all deliveries (domestic + international)
+      const domesticRes = await fetch("http://localhost:5000/api/admin/deliveries");
+      const internationalRes = await fetch("http://localhost:5000/api/admin/international/deliveries");
+      const driversRes = await fetch("http://localhost:5000/api/delivery/auth/all-agents");
 
-  const handleLogout = () => {
-    if (window.confirm('Logout from Admin Portal?')) {
-      // In real app → also clear tokens/context here
-      window.location.href = '/';
+      const domesticData = domesticRes.ok ? await domesticRes.json() : { deliveries: [] };
+      const internationalData = internationalRes.ok ? await internationalRes.json() : { deliveries: [] };
+      const driversData = driversRes.ok ? await driversRes.json() : { agents: [] };
+
+      const domesticDeliveries = domesticData.deliveries || [];
+      const internationalDeliveries = internationalData.deliveries || [];
+      const allDeliveries = [...domesticDeliveries, ...internationalDeliveries];
+
+      const totalDeliveries = allDeliveries.length;
+      const completedDeliveries = allDeliveries.filter(
+        (d) => d.status === "completed" || d.status === "delivered" || d.status === "approved"
+      ).length;
+      const pendingDeliveries = allDeliveries.filter(
+        (d) => d.status === "pending" || d.status === "in-transit" || d.status === "rejected"
+      ).length;
+      const activeDrivers = driversData.agents?.length || 0;
+
+      setStats({
+        totalDeliveries,
+        completed: completedDeliveries,
+        pending: pendingDeliveries,
+        activeDrivers,
+      });
+    } catch (error) {
+      console.error("Error fetching stats:", error);
+      // Keep default values on error
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="dashboard-wrapper">
-      {/* Sidebar - always visible on protected pages */}
-      <aside className={`sidebar ${isSidebarOpen ? 'open' : 'closed'}`}>
-        <div className="sidebar-header">
-          <div className="logo">
-            <span className="logo-icon">🚚</span>
-            <span className="logo-text">{companyName}</span>
-          </div>
-          <button className="toggle-btn" onClick={toggleSidebar}>
-            {isSidebarOpen ? '«' : '»'}
+    <div className="admin-home">
+      {/* Welcome Section */}
+      <div className="welcome-section">
+        <h1>Welcome to Admin Dashboard 👋</h1>
+        <p>Here you can manage all your delivery operations and view important metrics.</p>
+      </div>
+
+      {/* Stats Grid */}
+      <div className="stats-grid">
+        <div className="stat-card blue">
+          <div className="stat-icon">📦</div>
+          <h3>{loading ? "..." : stats.totalDeliveries}</h3>
+          <p>Total Deliveries</p>
+        </div>
+        <div className="stat-card purple">
+          <div className="stat-icon">✅</div>
+          <h3>{loading ? "..." : stats.completed}</h3>
+          <p>Completed</p>
+        </div>
+        <div className="stat-card orange">
+          <div className="stat-icon">⏳</div>
+          <h3>{loading ? "..." : stats.pending}</h3>
+          <p>Pending</p>
+        </div>
+        <div className="stat-card green">
+          <div className="stat-icon">🚚</div>
+          <h3>{loading ? "..." : stats.activeDrivers}</h3>
+          <p>Active Drivers</p>
+        </div>
+      </div>
+
+      {/* Activity Section */}
+      <div className="activity-section">
+        <h2>📋 Recent Activity</h2>
+        <ul className="activity-list">
+          <li className="activity-item">
+            <div className="activity-status success">✓</div>
+            <div className="activity-text">
+              <h4>Delivery Completed</h4>
+              <p>Package delivered successfully</p>
+            </div>
+          </li>
+          <li className="activity-item">
+            <div className="activity-status pending">⏳</div>
+            <div className="activity-text">
+              <h4>New Order Created</h4>
+              <p>Order awaiting assignment</p>
+            </div>
+          </li>
+          <li className="activity-item">
+            <div className="activity-status success">✓</div>
+            <div className="activity-text">
+              <h4>Driver Verified</h4>
+              <p>New driver account verified</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      {/* Quick Actions */}
+      <div className="activity-section">
+        <h2>⚡ Quick Actions</h2>
+        <div className="quick-actions">
+          <button className="action-btn">
+            ➕ New Delivery
+          </button>
+          <button className="action-btn">
+            👥 View Drivers
+          </button>
+          <button className="action-btn secondary">
+            📊 View Reports
+          </button>
+          <button className="action-btn secondary">
+            ⚙️ Settings
           </button>
         </div>
-
-        <div className="user-profile">
-          <div className="avatar">{userName.charAt(0)}</div>
-          <div className="user-info">
-            <h4>{userName}</h4>
-            <p>{userRole}</p>
-          </div>
-        </div>
-
-        <nav className="sidebar-nav">
-          <ul>
-            <li>
-              <Link to="/home" className={window.location.pathname === '/home' ? 'active' : ''}>
-                <span className="icon">🏠</span>
-                <span className="label">Dashboard</span>
-              </Link>
-            </li>
-            <li>
-              <Link to="/domesticdelivery" className={window.location.pathname === '/domesticdelivery' ? 'active' : ''}>
-                <span className="icon">📦</span>
-                <span className="label">Domestic Delivery</span>
-              </Link>
-            </li>
-             <li>
-              <Link to="/internationaldelivery" className={window.location.pathname === '/internationaldelivery' ? 'active' : ''}>
-                <span className="icon">📦</span>
-                <span className="label">International Delivery</span>
-              </Link>
-            </li>
-
-           <li className="highlight-item">
-        <Link to="/trackdelivery" className={window.location.pathname === '/trackdelivery' ? 'active' : ''}>
-            <span className="icon">🔍</span>
-            <span className="label">Track Parcel</span>
-                     </Link>
-             </li>
-
-            <li>
-              <Link to="/reports">
-                <span className="icon">📊</span>
-                <span className="label">Reports</span>
-              </Link>
-            </li>
-            <li>
-              <Link to="/settings">
-                <span className="icon">⚙️</span>
-                <span className="label">Settings</span>
-              </Link>
-            </li>
-          </ul>
-        </nav>
-
-        <div className="sidebar-footer">
-          <button className="logout-btn" onClick={handleLogout}>
-            <span className="icon">🚪</span>
-            <span className="label">Logout</span>
-          </button>
-        </div>
-      </aside>
-
-      {/* Changing content goes here */}
-      <main className={`main-content ${isSidebarOpen ? 'sidebar-open' : 'sidebar-closed'}`}>
-        <Outlet />  {/* ← this is where nested routes render */}
-      </main>
+      </div>
     </div>
   );
 }

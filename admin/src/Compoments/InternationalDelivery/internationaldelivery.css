@@ -52,8 +52,11 @@ border-bottom:1px solid #eee;
 font-size:14px;
 }
 
-tr:hover{
-background:#f8f9ff;
+.table-top-head{
+background:#303c7a;
+}
+.table-data:hover{
+background:#9aa0c0;
 }
 
 /* BUTTONS */
@@ -170,7 +173,7 @@ margin:4px 0;
 font-size:14px;
 color:#333;
 }
-
+G
 /* ADDRESS BOX */
 
 .address-box{

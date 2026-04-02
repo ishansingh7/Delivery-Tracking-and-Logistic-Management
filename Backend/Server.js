@@ -12,6 +12,9 @@ const internationalRoutes = require("./Routes/internationaldeliveryRoutes");
 const adminInternationalRoutes = require("./Routes/adminInternationalRoutes");
  
 const trackingRoutes = require("./Routes/trackingRoutes");
+const deliveryAuthRoutes = require("./Routes/Deliveryauth");
+
+
 const app = express();
 
 connectDB();
@@ -19,8 +22,10 @@ connectDB();
 app.use(cors());
 app.use(express.json());
 
-/* Domestic Routes */
+/* Delivery Personnel Auth Routes - MUST be mounted first */
+app.use("/api/delivery/auth", deliveryAuthRoutes);
 
+/* Domestic Routes */
 app.use("/api/delivery", deliveryRoutes);
 app.use("/api/admin", adminRoutes);
 
@@ -31,6 +36,8 @@ app.use("/api/admin/international", adminInternationalRoutes);
 
 /* Tracking Routes */
 app.use("/api/track", trackingRoutes);
+
+app.use("/uploads", express.static("uploads"));
 
 const PORT = process.env.PORT || 5000;
 

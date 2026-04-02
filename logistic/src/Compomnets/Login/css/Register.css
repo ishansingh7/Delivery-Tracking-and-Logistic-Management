@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+/* Reset */
+
+/* Full Page */
+.register-page {
+  background: linear-gradient(135deg, #5f534a, #3a3739);
+  padding: 40px 20px;
+  color: white;
+}
+
+/* Header */
+.register-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.register-header h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.register-header p {
+  font-size: 15px;
+  opacity: 0.9;
+}
+
+/* Form */
+.register-form {
+  max-width: 500px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Inputs */
+.register-form input {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+}
+
+/* Labels */
+.register-form label {
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+/* File */
+.register-form input[type="file"] {
+  background: white;
+  color: black;
+  padding: 8px;
+}
+
+/* Buttons */
+.register-form button {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: #222;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.register-form button:hover {
+  background: #000;
+  transform: translateY(-2px);
+}
+
+/* Login link */
+.login-link {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.login-link a {
+  color: #fff;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .register-header h1 {
+    font-size: 24px;
+  }
+}

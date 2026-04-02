@@ -42,9 +42,14 @@ padding:12px;
 border-bottom:1px solid #eee;
 }
 
-tr:hover{
-
+.table-top-head{
+background:#303c7a;
 }
+.table-data:hover{
+background:#9aa0c0;
+}
+
+
 
 /* BUTTONS */
 
