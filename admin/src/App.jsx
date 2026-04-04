@@ -9,6 +9,7 @@ import AdminLayout from "./Compoments/Layout/AdminLayout";             // ← la
 import TrackDelivery from "./Compoments/Tracking/TrackDelivery";   // ← track page
 import InternationlDelivery from "./Compoments/InternationalDelivery/InternationalDelivery";
 import DeliveryAgents from "./Compoments/DeliveryAgents/DeliveryAgents";   // ← delivery agents
+import ManageDeliveries from "./Compoments/ManageDeliveries/ManageDeliveries"; // ← manage all deliveries
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -35,6 +36,7 @@ function App() {
           <Route path="/trackdelivery" element={<TrackDelivery />} />
           <Route path="/internationaldelivery" element={<InternationlDelivery />} />
           <Route path="/agents" element={<DeliveryAgents />} />
+          <Route path="/manage-deliveries" element={<ManageDeliveries />} />
 
           {/* Add more protected routes here later */}
           {/* <Route path="/reports" element={<Reports />} /> */}

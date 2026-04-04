@@ -8,6 +8,13 @@ const AdminInternationalDashboard = () => {
 
   useEffect(() => {
     fetchDeliveries();
+
+    // Set up real-time polling - refresh every 3 seconds
+    const pollInterval = setInterval(() => {
+      fetchDeliveries();
+    }, 3000);
+
+    return () => clearInterval(pollInterval);
   }, []);
 
   const fetchDeliveries = async () => {

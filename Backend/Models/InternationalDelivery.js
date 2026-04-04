@@ -42,7 +42,23 @@ default:"Pending"
 deliveryStatus:{
 type:String,
 default:"Processing"
-}
+},
+
+// Delivery Person Assignment
+assignedTo:{
+type:mongoose.Schema.Types.ObjectId,
+ref:"User",
+default:null
+},
+
+deliveryPersonName:String,
+deliveryPersonPhone:String,
+deliveryPersonLicense:String,
+deliveryPersonPhoto:String,
+assignedAt:Date,
+
+lastLocation:String,
+trackingNotes:String
 
 },{timestamps:true});
 

@@ -8,7 +8,6 @@ import "./css/Home.css";
 function Home() {
   const [user, setUser] = useState(null);
   const [showEditModal, setShowEditModal] = useState(false);
-  const [activeTab, setActiveTab] = useState("profile");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -40,12 +39,6 @@ function Home() {
     }
   }, [navigate]);
 
-  const handleLogout = () => {
-    localStorage.removeItem("user");
-    localStorage.removeItem("token");
-    navigate("/");
-  };
-
   const handleEditClick = () => {
     setShowEditModal(true);
   };
@@ -61,37 +54,9 @@ function Home() {
   }
 
   return (
-    <div className="dashboard">
-
-      {/* SIDEBAR */}
-      <div className="sidebar">
-        <div className="logo-section">
-          <h2>🚚 DeliExpress</h2>
-        </div>
-        <ul>
-          <li 
-            className={activeTab === "profile" ? "active" : ""}
-            onClick={() => setActiveTab("profile")}
-          >
-            👤 Profile
-          </li>
-          <li 
-            className={activeTab === "dashboard" ? "active" : ""}
-            onClick={() => setActiveTab("dashboard")}
-          >
-            📊 Dashboard
-          </li>
-          <li>📦 My Orders</li>
-          <li>💰 Earnings</li>
-          <li>⚙️ Settings</li>
-          <li onClick={handleLogout} className="logout-btn">
-            🚪 Logout
-          </li>
-        </ul>
-      </div>
+    <div>
 
       {/* MAIN CONTENT */}
-      <div className="main">
 
         {/* HEADER */}
         <div className="header">
@@ -108,69 +73,13 @@ function Home() {
           </div>
         </div>
 
-        {/* PROFILE TAB */}
-        {activeTab === "profile" && (
-          <div className="profile-section">
-            <ProfileCard 
-              user={user} 
-              onEditClick={handleEditClick}
-            />
-          </div>
-        )}
-
-        {/* DASHBOARD TAB */}
-        {activeTab === "dashboard" && (
-          <>
-            {/* STATS */}
-            <div className="stats">
-              <div className="card">
-                <h3>15</h3>
-                <p>Total Orders</p>
-              </div>
-
-              <div className="card">
-                <h3>10</h3>
-                <p>Delivered</p>
-              </div>
-
-              <div className="card">
-                <h3>5</h3>
-                <p>Pending</p>
-              </div>
-
-              <div className="card">
-                <h3>₹2500</h3>
-                <p>Earnings</p>
-              </div>
-            </div>
-
-            {/* ACTIVE ORDERS */}
-            <div className="orders">
-              <h3>Active Deliveries</h3>
-
-              <div className="order">
-                <div>
-                  <p><strong>Order #101</strong></p>
-                  <p>Pickup: Restaurant A</p>
-                  <p>Drop: Customer Location</p>
-                </div>
-                <button>Start</button>
-              </div>
-
-              <div className="order">
-                <div>
-                  <p><strong>Order #102</strong></p>
-                  <p>Pickup: Warehouse B</p>
-                  <p>Drop: Office Area</p>
-                </div>
-                <button>Start</button>
-              </div>
-
-            </div>
-          </>
-        )}
-
-      </div>
+        {/* PROFILE SECTION */}
+        <div className="profile-section">
+          <ProfileCard 
+            user={user} 
+            onEditClick={handleEditClick}
+          />
+        </div>
 
       {/* Edit Profile Modal */}
       {showEditModal && (

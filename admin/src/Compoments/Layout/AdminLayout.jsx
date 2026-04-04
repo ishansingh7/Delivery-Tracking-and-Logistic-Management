@@ -95,6 +95,15 @@ export default function AdminLayout() {
             </li>
             <li>
               <Link 
+                to="/manage-deliveries" 
+                className={location.pathname === '/manage-deliveries' ? 'active' : ''}
+              >
+                <span className="icon">📋</span>
+                <span className="label">Manage Deliveries</span>
+              </Link>
+            </li>
+            <li>
+              <Link 
                 to="/reports"
                 className={location.pathname === '/reports' ? 'active' : ''}
               >

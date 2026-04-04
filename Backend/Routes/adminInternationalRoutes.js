@@ -5,14 +5,17 @@ const {
   getDeliveries,
   approveDelivery,
   rejectDelivery,
-  deleteDelivery
-} = require("../Controllers/adminInternationalController");
+  deleteDelivery,
+  updateDelivery
+} = require("../controllers/adminInternationalController");
 
 router.get("/deliveries", getDeliveries);
 
 router.put("/approve/:id", approveDelivery);
 
 router.put("/reject/:id", rejectDelivery);
+
+router.put("/update/:id", updateDelivery);
 
 router.delete("/delete/:id", deleteDelivery);
 

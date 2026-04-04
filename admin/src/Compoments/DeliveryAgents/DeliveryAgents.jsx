@@ -11,6 +11,13 @@ export default function DeliveryAgents() {
 
   useEffect(() => {
     fetchDeliveryAgents();
+
+    // Set up real-time polling - refresh every 5 seconds
+    const pollInterval = setInterval(() => {
+      fetchDeliveryAgents();
+    }, 5000);
+
+    return () => clearInterval(pollInterval);
   }, []);
 
   const fetchDeliveryAgents = async () => {

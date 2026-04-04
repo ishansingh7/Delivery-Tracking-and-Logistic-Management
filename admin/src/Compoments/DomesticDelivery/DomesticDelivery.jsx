@@ -8,6 +8,13 @@ const AdminDashboard = () => {
 
   useEffect(() => {
     fetchDeliveries();
+
+    // Set up real-time polling - refresh every 3 seconds
+    const pollInterval = setInterval(() => {
+      fetchDeliveries();
+    }, 3000);
+
+    return () => clearInterval(pollInterval);
   }, []);
 
   const fetchDeliveries = async () => {
@@ -67,6 +74,7 @@ const AdminDashboard = () => {
             <th>Tracking ID</th>
             <th>Sender</th>
             <th>Receiver</th>
+            <th>Delivery Agent</th>
             <th>Delivery Status</th>
             <th>Approval</th>
             <th>Payment</th>
@@ -84,6 +92,7 @@ const AdminDashboard = () => {
               <td>{d.trackingId}</td>
               <td>{d.senderName}</td>
               <td>{d.receiverName}</td>
+              <td>{d.deliveryPersonName ? d.deliveryPersonName : <span style={{color: "#999"}}>Not Assigned</span>}</td>
               <td>{d.deliveryStatus}</td>
               <td>{d.approvalStatus}</td>
               <td>{d.paymentMethod}</td>
@@ -149,6 +158,39 @@ const AdminDashboard = () => {
                 <p><strong>Payment Method:</strong> {selectedDelivery.paymentMethod}</p>
 
               </div>
+
+              {/* DELIVERY AGENT */}
+              {selectedDelivery.deliveryPersonName && (
+                <div className="detail-card">
+
+                  <h3>👨‍💼 Assigned Delivery Agent</h3>
+
+                  {selectedDelivery.deliveryPersonPhoto && (
+                    <div style={{ marginBottom: "12px", textAlign: "center" }}>
+                      <img
+                        src={selectedDelivery.deliveryPersonPhoto.startsWith("http") ? selectedDelivery.deliveryPersonPhoto : `http://localhost:5000/uploads/${selectedDelivery.deliveryPersonPhoto}`}
+                        alt={selectedDelivery.deliveryPersonName}
+                        style={{
+                          width: "120px",
+                          height: "120px",
+                          borderRadius: "8px",
+                          objectFit: "cover",
+                          border: "2px solid #ff6a00"
+                        }}
+                      />
+                    </div>
+                  )}
+
+                  <p><strong>Name:</strong> {selectedDelivery.deliveryPersonName}</p>
+
+                  <p><strong>Phone:</strong> {selectedDelivery.deliveryPersonPhone}</p>
+
+                  <p><strong>License:</strong> {selectedDelivery.deliveryPersonLicense}</p>
+
+                  <p><strong>Assigned At:</strong> {new Date(selectedDelivery.assignedAt).toLocaleString()}</p>
+
+                </div>
+              )}
 
 
               {/* SENDER */}
