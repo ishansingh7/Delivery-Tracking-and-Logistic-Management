@@ -4,6 +4,7 @@ import image from "../../assets/logo/Menu.png";
 
 
 
+
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -54,8 +55,8 @@ const Navbar = () => {
         <a href="/contact">Contact</a>
         <a href="#">Locations</a>
         <a href="#">Jobs</a>
-         <a href="#">Admin</a>
-        <a href="#">Login</a>
+         <a href="http://localhost:5174">Admin</a>
+        <a href="http://localhost:5173">Logistic</a>
         <button className="track-btn">TRACK</button>
       </nav>
     </header>
