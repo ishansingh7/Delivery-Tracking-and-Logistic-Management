@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import image from "../../assets/logo/Menu.png";
-
-
-
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
+  // Scroll effect
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -17,6 +17,11 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Close menu when clicking a link
+  const handleNavClick = () => {
+    setMenuOpen(false);
+  };
 
   return (
     <header className={`navbar ${scrolled ? "scrolled" : ""}`}>
@@ -47,17 +52,33 @@ const Navbar = () => {
         <span></span>
       </div>
 
-      {/* RIGHT LINKS */}
+      {/* NAV LINKS */}
       <nav className={`nav-links ${menuOpen ? "open" : ""}`}>
-        <a href="/">Home</a>
-        <a href="/About">About</a>
-        <a href="/Services">Services</a>
-        <a href="/contact">Contact</a>
-        <a href="#">Locations</a>
-        <a href="#">Jobs</a>
-         <a href="http://localhost:5174">Admin</a>
-        <a href="http://localhost:5173">Logistic</a>
-        <button className="track-btn">TRACK</button>
+        
+        <Link to="/" onClick={handleNavClick}>Home</Link>
+        <Link to="/about" onClick={handleNavClick}>About</Link>
+        <Link to="/services" onClick={handleNavClick}>Services</Link>
+        <Link to="/contact" onClick={handleNavClick}>Contact</Link>
+       
+        {/* External Links */}
+        <a href="http://localhost:5174" target="_blank" rel="noreferrer">
+          Admin
+        </a>
+        <a href="http://localhost:5173" target="_blank" rel="noreferrer">
+          Logistic
+        </a>
+
+        {/* Start Service Button */}
+        <button
+          className="track-btn"
+          onClick={() => {
+            handleNavClick();
+            navigate("/servicesDelibery");
+          }}
+        >
+          Start Service
+        </button>
+
       </nav>
     </header>
   );

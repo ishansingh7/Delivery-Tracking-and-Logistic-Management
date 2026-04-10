@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Home.css";
 import heroImage from "./photo/DeliveryBoy.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const [trackingId, setTrackingId] = useState("");
+  const navigate = useNavigate();
+
+  const handleTrack = () => {
+    const trimmedId = trackingId.trim();
+
+    if (!trimmedId) {
+      alert("Please enter tracking number");
+      return;
+    }
+
+    navigate(`/track/${trimmedId}`);
+  };
+
   return (
     <div className="shipment-home">
 
@@ -15,19 +29,18 @@ const Home = () => {
           <div className="shipment-track-box">
             <input
               type="text"
-              placeholder="Type your tracking number here"
+              placeholder="Enter tracking number"
+              value={trackingId}
+              onChange={(e) => setTrackingId(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") handleTrack();
+              }}
             />
-            <button>Track</button>
+            <button onClick={handleTrack}>Track</button>
           </div>
-
-          <p className="shipment-info-text">
-            Enter multiple tracking numbers with a space or comma.
-          </p>
-          <p className="shipment-info-text">
-            If your tracking number isn’t working, double-check the format.
-          </p>
         </div>
 
+        {/* IMAGE */}
         <div className="shipment-hero-right">
           <img src={heroImage} alt="Delivery" />
         </div>

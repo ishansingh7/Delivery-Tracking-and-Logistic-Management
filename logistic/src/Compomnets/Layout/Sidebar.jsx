@@ -13,7 +13,7 @@ function Sidebar() {
   return (
     <div className="sidebar">
       <div className="logo-section">
-        <h2>🚚 DeliExpress</h2>
+        <h2>🚚 MoveEAsy</h2>
       </div>
       <ul>
         <li 

@@ -7,7 +7,7 @@ export default function AdminLayout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true); // Open by default
   const location = useLocation();
 
-  const companyName = "SwiftLogix";
+  const companyName = "MoveEAsy";
   const userName = "Admin User";
   const userRole = "Administrator";
 
