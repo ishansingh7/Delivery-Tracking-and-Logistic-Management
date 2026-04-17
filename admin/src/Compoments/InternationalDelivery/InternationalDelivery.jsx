@@ -19,8 +19,9 @@ const AdminInternationalDashboard = () => {
 
   const fetchDeliveries = async () => {
 
+    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
     const res = await fetch(
-      "http://localhost:5000/api/admin/international/deliveries"
+      `${API_URL}/api/admin/international/deliveries`
     );
 
     const data = await res.json();
@@ -30,8 +31,9 @@ const AdminInternationalDashboard = () => {
 
   const approve = async (id) => {
 
+    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
     await fetch(
-      `http://localhost:5000/api/admin/international/approve/${id}`,
+      `${API_URL}/api/admin/international/approve/${id}`,
       { method: "PUT" }
     );
 
@@ -40,8 +42,9 @@ const AdminInternationalDashboard = () => {
 
   const reject = async (id) => {
 
+    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
     await fetch(
-      `http://localhost:5000/api/admin/international/reject/${id}`,
+      `${API_URL}/api/admin/international/reject/${id}`,
       { method: "PUT" }
     );
 
@@ -50,8 +53,9 @@ const AdminInternationalDashboard = () => {
 
   const deleteDelivery = async (id) => {
 
+    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
     await fetch(
-      `http://localhost:5000/api/admin/international/delete/${id}`,
+      `${API_URL}/api/admin/international/delete/${id}`,
       { method: "DELETE" }
     );
 

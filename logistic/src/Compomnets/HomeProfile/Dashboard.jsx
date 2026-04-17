@@ -44,9 +44,10 @@ function Dashboard() {
 
   const fetchOrders = async (userId) => {
     try {
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
       const [domesticRes, internationalRes] = await Promise.all([
-        axios.get(`http://localhost:5000/api/delivery/myorders/${userId}`),
-        axios.get(`http://localhost:5000/api/international/myorders/${userId}`),
+        axios.get(`${API_URL}/api/delivery/myorders/${userId}`),
+        axios.get(`${API_URL}/api/international/myorders/${userId}`),
       ]);
 
       const domesticOrders = domesticRes.data.data || domesticRes.data || [];
@@ -98,7 +99,7 @@ function Dashboard() {
         <div className="user">
           <span>{user?.name}</span>
           <img
-            src={user?.photo ? (user.photo.startsWith("http") ? user.photo : `http://localhost:5000/uploads/${user.photo}`) : "https://via.placeholder.com/50"}
+            src={user?.photo ? (user.photo.startsWith("http") ? user.photo : `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/uploads/${user.photo}`) : "https://via.placeholder.com/50"}
             alt="profile"
             onError={(e) => {
               e.target.src = "https://via.placeholder.com/50";

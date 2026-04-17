@@ -57,7 +57,8 @@ const TrackShipment = () => {
     setShipment(null);
 
     try {
-      const res = await fetch(`http://localhost:5000/api/track/${trackingId}`);
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const res = await fetch(`${API_URL}/api/track/${trackingId}`);
       
       if (!res.ok) {
         throw new Error("Shipment not found");

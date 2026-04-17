@@ -25,7 +25,8 @@ function Register() {
         data.append(key, form[key]);
       }
 
-     await axios.post("http://localhost:5000/api/delivery/auth/register", data);
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+     await axios.post(`${API_URL}/api/delivery/auth/register`, data);
       alert("Registered Successfully 🚚");
 
     } catch (err) {

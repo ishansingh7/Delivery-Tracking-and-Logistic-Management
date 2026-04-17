@@ -27,9 +27,10 @@ export default function AdminHome() {
     try {
       setLoading(true);
 
-      const domesticRes = await fetch("http://localhost:5000/api/admin/deliveries");
-      const internationalRes = await fetch("http://localhost:5000/api/admin/international/deliveries");
-      const driversRes = await fetch("http://localhost:5000/api/delivery/auth/all-agents");
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const domesticRes = await fetch(`${API_URL}/api/admin/deliveries`);
+      const internationalRes = await fetch(`${API_URL}/api/admin/international/deliveries`);
+      const driversRes = await fetch(`${API_URL}/api/delivery/auth/all-agents`);
 
       const domesticData = domesticRes.ok ? await domesticRes.json() : [];
       const internationalData = internationalRes.ok ? await internationalRes.json() : [];

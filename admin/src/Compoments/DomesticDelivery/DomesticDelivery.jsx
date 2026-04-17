@@ -19,7 +19,8 @@ const AdminDashboard = () => {
 
   const fetchDeliveries = async () => {
 
-    const res = await fetch("http://localhost:5000/api/admin/deliveries");
+    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+    const res = await fetch(`${API_URL}/api/admin/deliveries`);
     const data = await res.json();
 
     setDeliveries(data);
@@ -27,7 +28,8 @@ const AdminDashboard = () => {
 
   const approve = async (id) => {
 
-    await fetch(`http://localhost:5000/api/admin/approve/${id}`, {
+    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+    await fetch(`${API_URL}/api/admin/approve/${id}`, {
       method: "PUT"
     });
 
@@ -36,7 +38,8 @@ const AdminDashboard = () => {
 
   const reject = async (id) => {
 
-    await fetch(`http://localhost:5000/api/admin/reject/${id}`, {
+    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+    await fetch(`${API_URL}/api/admin/reject/${id}`, {
       method: "PUT"
     });
 
@@ -45,7 +48,8 @@ const AdminDashboard = () => {
 
   const deleteDelivery = async (id) => {
 
-    await fetch(`http://localhost:5000/api/admin/delete/${id}`, {
+    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+    await fetch(`${API_URL}/api/admin/delete/${id}`, {
       method: "DELETE"
     });
 
@@ -168,7 +172,7 @@ const AdminDashboard = () => {
                   {selectedDelivery.deliveryPersonPhoto && (
                     <div style={{ marginBottom: "12px", textAlign: "center" }}>
                       <img
-                        src={selectedDelivery.deliveryPersonPhoto.startsWith("http") ? selectedDelivery.deliveryPersonPhoto : `http://localhost:5000/uploads/${selectedDelivery.deliveryPersonPhoto}`}
+                        src={selectedDelivery.deliveryPersonPhoto.startsWith("http") ? selectedDelivery.deliveryPersonPhoto : `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/uploads/${selectedDelivery.deliveryPersonPhoto}`}
                         alt={selectedDelivery.deliveryPersonName}
                         style={{
                           width: "120px",

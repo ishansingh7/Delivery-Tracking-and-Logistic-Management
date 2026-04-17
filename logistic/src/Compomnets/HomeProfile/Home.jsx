@@ -21,7 +21,8 @@ function Home() {
         // Optionally fetch fresh data from backend if user has ID
         if (parsedUser._id || parsedUser.id) {
           const userId = parsedUser._id || parsedUser.id;
-          axios.get(`http://localhost:5000/api/delivery/auth/profile/${userId}`)
+          const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+          axios.get(`${API_URL}/api/delivery/auth/profile/${userId}`)
             .then(response => {
               console.log("Fresh user data fetched:", response.data.user);
               setUser(response.data.user);
@@ -64,7 +65,7 @@ function Home() {
           <div className="user">
             <span>{user?.name}</span>
             <img 
-              src={user?.photo ? (user.photo.startsWith("http") ? user.photo : `http://localhost:5000/uploads/${user.photo}`) : "https://via.placeholder.com/50"} 
+              src={user?.photo ? (user.photo.startsWith("http") ? user.photo : `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/uploads/${user.photo}`) : "https://via.placeholder.com/50"} 
               alt="profile"
               onError={(e) => {
                 e.target.src = "https://via.placeholder.com/50";

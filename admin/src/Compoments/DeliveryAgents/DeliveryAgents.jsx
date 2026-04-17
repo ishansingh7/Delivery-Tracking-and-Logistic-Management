@@ -23,7 +23,8 @@ export default function DeliveryAgents() {
   const fetchDeliveryAgents = async () => {
     try {
       setLoading(true);
-      const response = await fetch("http://localhost:5000/api/delivery/auth/all-agents");
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const response = await fetch(`${API_URL}/api/delivery/auth/all-agents`);
       
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}: ${response.statusText}`);
@@ -66,8 +67,9 @@ export default function DeliveryAgents() {
 
   const handleVerify = async (agentId) => {
     try {
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
       const response = await fetch(
-        `http://localhost:5000/api/delivery/auth/verify-agent/${agentId}`,
+        `${API_URL}/api/delivery/auth/verify-agent/${agentId}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
@@ -92,8 +94,9 @@ export default function DeliveryAgents() {
   const handleUnverify = async (agentId) => {
     if (window.confirm("Are you sure you want to unverify this agent?")) {
       try {
+        const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
         const response = await fetch(
-          `http://localhost:5000/api/delivery/auth/unverify-agent/${agentId}`,
+          `${API_URL}/api/delivery/auth/unverify-agent/${agentId}`,
           { method: "PUT" }
         );
         
@@ -115,7 +118,8 @@ export default function DeliveryAgents() {
   const handleDelete = async (agentId) => {
     if (window.confirm("Are you sure you want to delete this agent?")) {
       try {
-        const response = await fetch(`http://localhost:5000/api/delivery/auth/delete-agent/${agentId}`, {
+        const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+        const response = await fetch(`${API_URL}/api/delivery/auth/delete-agent/${agentId}`, {
           method: "DELETE"
         });
         
@@ -179,7 +183,7 @@ export default function DeliveryAgents() {
                     agent.photo?.startsWith("http")
                       ? agent.photo
                       : agent.photo
-                      ? `http://localhost:5000/uploads/${agent.photo}`
+                      ? `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/uploads/${agent.photo}`
                       : "https://via.placeholder.com/150?text=No+Photo"
                   }
                   alt={agent.name}

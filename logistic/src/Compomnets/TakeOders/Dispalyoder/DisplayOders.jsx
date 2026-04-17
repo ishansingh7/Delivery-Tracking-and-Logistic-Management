@@ -98,9 +98,10 @@ export default function DisplayOrders() {
 
   const fetchMyOrders = async (userId) => {
     try {
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
       const [domesticRes, internationalRes] = await Promise.all([
-        axios.get(`http://localhost:5000/api/delivery/myorders/${userId}`),
-        axios.get(`http://localhost:5000/api/international/myorders/${userId}`)
+        axios.get(`${API_URL}/api/delivery/myorders/${userId}`),
+        axios.get(`${API_URL}/api/international/myorders/${userId}`)
       ]);
 
       const domestic = (domesticRes.data.data || domesticRes.data || []).map((order) => ({
@@ -157,9 +158,10 @@ export default function DisplayOrders() {
 
       const order = allOrders.find((o) => o._id === orderId);
       const isInternational = order?.type === "International" || !!order?.senderCountry;
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
       const endpoint = isInternational
-        ? `http://localhost:5000/api/admin/international/update/${orderId}`
-        : `http://localhost:5000/api/admin/update/${orderId}`;
+        ? `${API_URL}/api/admin/international/update/${orderId}`
+        : `${API_URL}/api/admin/update/${orderId}`;
 
       const response = await axios.put(
         endpoint,

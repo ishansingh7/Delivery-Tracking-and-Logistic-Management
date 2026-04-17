@@ -34,9 +34,10 @@ export default function AcceptOrders() {
 
   const fetchAvailableOrders = async () => {
     try {
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
       const [domesticResponse, internationalResponse] = await Promise.all([
-        axios.get("http://localhost:5000/api/delivery/available"),
-        axios.get("http://localhost:5000/api/international/available")
+        axios.get(`${API_URL}/api/delivery/available`),
+        axios.get(`${API_URL}/api/international/available`)
       ]);
 
       const domesticOrders = domesticResponse.data.data || domesticResponse.data || [];
@@ -64,10 +65,11 @@ export default function AcceptOrders() {
 
     setAcceptingOrder(orderId);
     try {
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
       const endpoint =
         deliveryCategory === "International"
-          ? `http://localhost:5000/api/international/accept/${orderId}`
-          : `http://localhost:5000/api/delivery/accept/${orderId}`;
+          ? `${API_URL}/api/international/accept/${orderId}`
+          : `${API_URL}/api/delivery/accept/${orderId}`;
 
       await axios.post(endpoint, {
         deliveryPersonId: user._id,

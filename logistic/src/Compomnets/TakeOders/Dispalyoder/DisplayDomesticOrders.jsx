@@ -32,8 +32,9 @@ export default function DisplayDomesticOrders() {
 
   const fetchApprovedOrders = async () => {
     try {
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
       const response = await axios.get(
-        "http://localhost:5000/api/delivery/available"
+        `${API_URL}/api/delivery/available`
       );
       setOrders(response.data.data || response.data);
       setLoading(false);
@@ -51,8 +52,9 @@ export default function DisplayDomesticOrders() {
 
     setSelectedOrderId(orderId);
     try {
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
       const response = await axios.post(
-        `http://localhost:5000/api/delivery/accept/${orderId}`,
+        `${API_URL}/api/delivery/accept/${orderId}`,
         {
           deliveryPersonId: user._id,
           deliveryPersonName: user.name,
@@ -85,8 +87,9 @@ export default function DisplayDomesticOrders() {
 
   const updateTrackingStatus = async (orderId) => {
     try {
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
       await axios.put(
-        `http://localhost:5000/api/admin/update/${orderId}`,
+        `${API_URL}/api/admin/update/${orderId}`,
         {
           deliveryStatus: trackingStatus.currentStatus,
           lastLocation: trackingStatus.location,

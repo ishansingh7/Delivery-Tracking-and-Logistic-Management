@@ -25,9 +25,10 @@ const ManageDeliveries = () => {
 
   const fetchAllDeliveries = async () => {
     try {
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
       const [domesticRes, internationalRes] = await Promise.all([
-        axios.get("http://localhost:5000/api/admin/deliveries"),
-        axios.get("http://localhost:5000/api/admin/international/deliveries")
+        axios.get(`${API_URL}/api/admin/deliveries`),
+        axios.get(`${API_URL}/api/admin/international/deliveries`)
       ]);
 
       const domestic = Array.isArray(domesticRes.data) ? domesticRes.data.map(d => ({ ...d, type: "Domestic" })) : [];
@@ -200,7 +201,7 @@ const ManageDeliveries = () => {
                   {selectedDelivery.deliveryPersonPhoto && (
                     <div style={{ marginBottom: "12px", textAlign: "center" }}>
                       <img
-                        src={selectedDelivery.deliveryPersonPhoto.startsWith("http") ? selectedDelivery.deliveryPersonPhoto : `http://localhost:5000/uploads/${selectedDelivery.deliveryPersonPhoto}`}
+                        src={selectedDelivery.deliveryPersonPhoto.startsWith("http") ? selectedDelivery.deliveryPersonPhoto : `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/uploads/${selectedDelivery.deliveryPersonPhoto}`}
                         alt={selectedDelivery.deliveryPersonName}
                         style={{ width: "120px", height: "120px", borderRadius: "8px", objectFit: "cover", border: "2px solid #0ea5e9" }}
                       />
