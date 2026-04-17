@@ -22,6 +22,11 @@ connectDB();
 app.use(cors());
 app.use(express.json());
 
+/* Root endpoint - for health checks */
+app.get("/", (req, res) => {
+  res.json({ message: "Delivery App Backend is Running ✅" });
+});
+
 /* Delivery Personnel Auth Routes - MUST be mounted first */
 app.use("/api/delivery/auth", deliveryAuthRoutes);
 
