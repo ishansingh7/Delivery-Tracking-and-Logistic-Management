@@ -5,6 +5,7 @@ import Navbar from "./Compoments/Nevbar/Nevbar";
 import Home from "./Compoments/Home/Home";
 import About from "./Compoments/Pages/About/About";
 import Services from "./Compoments/Pages/Services/Service";
+import ServicesTemp from "./Compoments/Pages/Services/ServicesTemp";
 import Contact from "./Compoments/Pages/Contact/Contact";
 import ServicesDelibery from "./Compoments/ServicesDelivery/Delivery/Servicesdelivery";
 import Footer from "./Compoments/Footer/Footer";
@@ -25,6 +26,7 @@ function App() {
         <Route path="/domesticDelivery" element={<DomesticDelivery />} />
         <Route path="/internationalDelivery" element={<InternationalDelivery />} />
         <Route path="/track/:trackingId" element={<TrackShipment />} />
+        <Route path="/servicesTemp" element={<ServicesTemp />} />
          
          
 
