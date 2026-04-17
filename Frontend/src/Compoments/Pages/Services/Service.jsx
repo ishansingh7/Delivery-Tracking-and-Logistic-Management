@@ -1,5 +1,5 @@
 import React from "react";
-import "./ServicesCss/Service.css";
+import "./ServicesCss/service.css";
 import ServicesTemp from "./ServicesTemp";
 import {
   FaTruck,
