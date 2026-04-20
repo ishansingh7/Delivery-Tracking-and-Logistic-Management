@@ -61,10 +61,10 @@ const Navbar = () => {
         <Link to="/contact" onClick={handleNavClick}>Contact</Link>
        
         {/* External Links */}
-        <a href="http://localhost:5174" target="_blank" rel="noreferrer">
+        <a href="https://delivery-tracking-and-logistic-mana-ten.vercel.app" target="_blank" rel="noreferrer">
           Admin
         </a>
-        <a href="http://localhost:5173" target="_blank" rel="noreferrer">
+        <a href="https://delivery-tracking-and-logistic-mana-gamma.vercel.app" target="_blank" rel="noreferrer">
           Logistic
         </a>
 
